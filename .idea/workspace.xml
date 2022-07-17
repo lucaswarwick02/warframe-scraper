@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="707b8a0c-11b1-4ab6-a462-7afc8576a6a2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaswarwick02/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaswarwick02/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucaswarwick02/WorldState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucaswarwick02/WorldState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,10 +21,17 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectId" id="2C4Na4eMofgGvrZ4a7zn87nXgXQ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -86,6 +91,7 @@
       <workItem from="1658059329815" duration="512000" />
       <workItem from="1658063860613" duration="1207000" />
       <workItem from="1658065090773" duration="3000" />
+      <workItem from="1658065175256" duration="1613000" />
     </task>
     <servers />
   </component>
