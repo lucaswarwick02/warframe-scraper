@@ -15,7 +15,7 @@ In order to understand the code names, and wait the data actually means, the [Wo
 # Data Provided <a name="#data-provided"></a>
 Below is the list of JSON objects which can be accessed and their relevant tab.
 ## World Data <a name="#world-data"></a>
-- "Time"
+- **"Time"**
 - "Sorties"
 - "Invasions"
 - "ActiveMissions"
