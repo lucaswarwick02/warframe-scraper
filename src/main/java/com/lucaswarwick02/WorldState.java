@@ -2,7 +2,7 @@ package com.lucaswarwick02;
 
 import java.io.IOException;
 
-import com.lucaswarwick02.content.world.WorldData;
+import com.lucaswarwick02.content.WorldData;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -32,6 +32,14 @@ public final class WorldState {
         }
 
         // Move data to classes
-        this.worldData = new WorldData(this.contentJSON.getLong("Time"));
+        this.worldData = new WorldData(
+                this.contentJSON.getLong("Time"),
+                this.contentJSON.getJSONArray("Sorties"),
+                this.contentJSON.getJSONArray("Invasions"),
+                this.contentJSON.getJSONArray("ActiveMissions"),
+                this.contentJSON.getJSONArray("VoidStorms"),
+                this.contentJSON.getJSONArray("Alerts"),
+                this.contentJSON.getJSONArray("GlobalUpgrades")
+        );
     }
 }
