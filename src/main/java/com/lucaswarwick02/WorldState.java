@@ -8,21 +8,28 @@ import java.io.IOException;
 import java.sql.Time;
 import java.sql.Timestamp;
 
+import com.lucaswarwick02.content.world.WorldData;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
 public final class WorldState {
-    private static String contentString;
-    public static String getContentString () {
-        return WorldState.contentString;
+    public static WorldState INSTANCE;
+
+    private String contentString;
+    public String getContentString () {
+        return this.contentString;
     }
 
-    private static JSONObject contentJSON;
-    public static JSONObject getContentJSON () {
-        return WorldState.contentJSON;
+    private JSONObject contentJSON;
+    public JSONObject getContentJSON () {
+        return this.contentJSON;
     }
+
+    public WorldData worldData = null;
 
     public WorldState () {
+        WorldState.INSTANCE = this;
+
         WebClient client = new WebClient();
         client.getOptions().setCssEnabled(false);
         client.getOptions().setJavaScriptEnabled(false);
@@ -33,34 +40,15 @@ public final class WorldState {
             HtmlPage page = client.getPage(searchUrl);
 
             // Store the content as String
-            WorldState.contentString = page.getBody().getTextContent();
-
+            this.contentString = page.getBody().getTextContent();
             // Store the content as JSON
-            WorldState.contentJSON = new JSONObject(WorldState.getContentString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+            this.contentJSON = new JSONObject(this.getContentString());
 
-    public static void SaveAsString () {
-        try {
-            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-            FileWriter fileWriter = new FileWriter(App.SAVE_DATA_PATH + timestamp.getTime() + ".txt");
-            fileWriter.write(WorldState.getContentString());
-            fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
 
-    public static void SaveAsJSON () {
-        try {
-            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-            FileWriter fileWriter = new FileWriter(App.SAVE_DATA_PATH + timestamp.getTime() + ".json");
-            fileWriter.write(WorldState.getContentJSON().toString());
-            fileWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // Move data to classes
+        this.worldData = new WorldData(this.contentJSON.getLong("Time"));
     }
 }

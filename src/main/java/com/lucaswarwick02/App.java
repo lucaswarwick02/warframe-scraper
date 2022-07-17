@@ -12,16 +12,12 @@ import java.net.URISyntaxException;
  */
 public class App 
 {
-    public static WorldState WORLD_STATE = new WorldState();
-
     public static String SAVE_DATA_PATH = new JFileChooser().getFileSystemView().getDefaultDirectory().toString() + File.separator + "warframe-scraper" + File.separator;
     public static void main( String[] args )
     {
-        // Initialise Project
-        createSaveDataDirectory();
+        WorldState.INSTANCE = new WorldState();
 
-        WorldState.SaveAsString();
-        WorldState.SaveAsJSON();
+        System.out.println("Time: " + WorldState.INSTANCE.worldData.time);
     }
 
     private static void createSaveDataDirectory () {
