@@ -22,15 +22,17 @@ public class WorldData {
         this.globalUpgrades = globalUpgrades;
     }
 
+    @Override
     public String toString () {
         StringBuilder sb = new StringBuilder();
-        sb.append(time + "\n\n");
-        sb.append(sorties.toString() + "\n\n");
-        sb.append(invasions + "\n\n");
-        sb.append(activeMissions + "\n\n");
-        sb.append(voidStorms + "\n\n");
-        sb.append(alerts + "\n\n");
-        sb.append(globalUpgrades + "\n\n");
+
+        sb.append(this.time + "\n\n");
+        sb.append(this.sorties.toString() + "\n\n");
+        sb.append(this.invasions.toString() + "\n\n");
+        sb.append(this.activeMissions.toString() + "\n\n");
+        sb.append(this.voidStorms.toString() + "\n\n");
+        sb.append(this.alerts.toString() + "\n\n");
+        sb.append(this.globalUpgrades.toString() + "\n\n");
 
         return sb.toString();
     }
