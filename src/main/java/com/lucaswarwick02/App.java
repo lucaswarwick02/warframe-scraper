@@ -1,29 +1,36 @@
 package com.lucaswarwick02;
 
-import javax.swing.*;
-import java.io.File;
-import java.io.FileWriter;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 /**
  * Hello world!
  *
  */
-public class App 
+public class App extends Application
 {
-    public static String SAVE_DATA_PATH = new JFileChooser().getFileSystemView().getDefaultDirectory().toString() + File.separator + "warframe-scraper" + File.separator;
     public static void main( String[] args )
     {
         WorldState.INSTANCE = new WorldState();
-
         System.out.println("Time: " + WorldState.INSTANCE.worldData.time);
+
+        launch();
     }
 
-    private static void createSaveDataDirectory () {
-        File directory = new File(SAVE_DATA_PATH);
-        if (!directory.exists()) {
-            directory.mkdir();
-        }
+    @Override
+    public void start(Stage stage) throws Exception {
+        BorderPane root = new BorderPane();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

@@ -27,23 +27,36 @@
       <scope>test</scope>
     </dependency>
     <!-- https://mvnrepository.com/artifact/net.sourceforge.htmlunit/com.springsource.com.gargoylesoftware.htmlunit -->
-    <!-- https://mvnrepository.com/artifact/net.sourceforge.htmlunit/htmlunit -->
-    <dependency>
-      <groupId>net.sourceforge.htmlunit</groupId>
-      <artifactId>htmlunit</artifactId>
-      <version>2.63.0</version>
-    </dependency>
     <!-- https://mvnrepository.com/artifact/org.json/json -->
     <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
       <version>20220320</version>
     </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>17.0.1</version>
+    </dependency>
+    <!-- our scraping library -->
+    <dependency>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>1.11.3</version>
+    </dependency>
   </dependencies>
 
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
+        <plugin>
+          <groupId>org.openjfx</groupId>
+          <artifactId>javafx-maven-plugin</artifactId>
+          <version>0.0.8</version>
+          <configuration>
+            <mainClass>com.lucaswarwick02.App</mainClass>
+          </configuration>
+        </plugin>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
@@ -82,6 +95,32 @@
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
+        </plugin>
+        <!--
+          This plugin configuration will enable Maven to include the project dependencies
+          in the produced jar file.
+          It also enables us to run the jar file using `java -jar command`
+          -->
+        <plugin>
+          <groupId>org.apache.Maven.plugins</groupId>
+          <artifactId>Maven-shade-plugin</artifactId>
+          <version>3.2.0</version>
+          <executions>
+            <execution>
+              <phase>package</phase>
+              <goals>
+                <goal>shade</goal>
+              </goals>
+              <configuration>
+                <transformers>
+                  <transformer
+                          implementation="org.apache.Maven.plugins.shade.resource.ManifestResourceTransformer">
+                    <mainClass>com.codetriage.scraper.App</mainClass>
+                  </transformer>
+                </transformers>
+              </configuration>
+            </execution>
+          </executions>
         </plugin>
       </plugins>
     </pluginManagement>
