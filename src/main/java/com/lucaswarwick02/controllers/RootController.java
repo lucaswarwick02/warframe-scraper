@@ -38,23 +38,23 @@ public class RootController {
     private Color x4;
 
     @FXML
-    public void displayGuildData(ActionEvent event) {
-        label.setText("");
-    }
-
-    @FXML
-    public void displayPVPData(ActionEvent event) {
-        label.setText("");
+    public void displayWorldData(ActionEvent event) {
+        label.setText(WorldState.INSTANCE.worldData.toString());
     }
 
     @FXML
     public void displayShopData(ActionEvent event) {
-        label.setText("");
+        label.setText(WorldState.INSTANCE.shopData.toString());
     }
 
     @FXML
-    public void displayWorldData(ActionEvent event) {
-        label.setText(WorldState.INSTANCE.worldData.toString());
+    public void displayGuildData(ActionEvent event) {
+        label.setText(WorldState.INSTANCE.guildData.toString());
+    }
+
+    @FXML
+    public void displayPVPData(ActionEvent event) {
+        label.setText(WorldState.INSTANCE.pvpData.toString());
     }
 
 }

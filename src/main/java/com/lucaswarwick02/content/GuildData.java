@@ -13,11 +13,9 @@ public class GuildData {
 
     @Override
     public String toString () {
-        StringBuilder sb = new StringBuilder();
 
-        sb.append(this.featuredGuilds.toString() + "\n\n");
-        sb.append(this.syndicateMissions.toString() + "\n\n");
-
-        return sb.toString();
+        return this.featuredGuilds.toString() +
+                "\n\n" +
+                this.syndicateMissions.toString();
     }
 }

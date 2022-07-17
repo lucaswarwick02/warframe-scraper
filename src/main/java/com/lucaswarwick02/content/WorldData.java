@@ -1,7 +1,6 @@
 package com.lucaswarwick02.content;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class WorldData {
     public long time;
@@ -24,16 +23,19 @@ public class WorldData {
 
     @Override
     public String toString () {
-        StringBuilder sb = new StringBuilder();
 
-        sb.append(this.time + "\n\n");
-        sb.append(this.sorties.toString() + "\n\n");
-        sb.append(this.invasions.toString() + "\n\n");
-        sb.append(this.activeMissions.toString() + "\n\n");
-        sb.append(this.voidStorms.toString() + "\n\n");
-        sb.append(this.alerts.toString() + "\n\n");
-        sb.append(this.globalUpgrades.toString() + "\n\n");
-
-        return sb.toString();
+        return this.time +
+                "\n\n" +
+                this.sorties.toString() +
+                "\n\n" +
+                this.invasions.toString() +
+                "\n\n" +
+                this.activeMissions.toString() +
+                "\n\n" +
+                this.voidStorms.toString() +
+                "\n\n" +
+                this.alerts.toString() +
+                "\n\n" +
+                this.globalUpgrades.toString();
     }
 }

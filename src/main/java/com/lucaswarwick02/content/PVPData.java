@@ -13,11 +13,9 @@ public class PVPData {
 
     @Override
     public String toString () {
-        StringBuilder sb = new StringBuilder();
 
-        sb.append(this.challengeInstances.toString() + "\n\n");
-        sb.append(this.activeTournaments.toString() + "\n\n");
-
-        return sb.toString();
+        return this.challengeInstances.toString() +
+                "\n\n" +
+                this.activeTournaments.toString();
     }
 }

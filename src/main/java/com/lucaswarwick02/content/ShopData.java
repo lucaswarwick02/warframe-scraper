@@ -15,12 +15,11 @@ public class ShopData {
 
     @Override
     public String toString () {
-        StringBuilder sb = new StringBuilder();
 
-        sb.append(this.dailyDeals.toString() + "\n\n");
-        sb.append(this.voidTraders.toString() + "\n\n");
-        sb.append(this.flashSales.toString() + "\n\n");
-
-        return sb.toString();
+        return this.dailyDeals.toString() +
+                "\n\n" +
+                this.voidTraders.toString() +
+                "\n\n" +
+                this.flashSales.toString();
     }
 }

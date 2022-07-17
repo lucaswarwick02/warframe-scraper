@@ -2,6 +2,9 @@ package com.lucaswarwick02;
 
 import java.io.IOException;
 
+import com.lucaswarwick02.content.GuildData;
+import com.lucaswarwick02.content.PVPData;
+import com.lucaswarwick02.content.ShopData;
 import com.lucaswarwick02.content.WorldData;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
@@ -10,15 +13,15 @@ import org.jsoup.nodes.Document;
 public final class WorldState {
     public static WorldState INSTANCE;
 
-    private JSONObject contentJSON;
-    public JSONObject getContentJSON () {
-        return this.contentJSON;
-    }
-
     public WorldData worldData = null;
+    public ShopData shopData = null;
+    public GuildData guildData = null;
+    public PVPData pvpData = null;
 
     public WorldState () {
         WorldState.INSTANCE = this;
+
+        JSONObject content = null;
 
         try {
             Document doc = Jsoup.connect("https://content.warframe.com/dynamic/worldState.php").get();
@@ -26,20 +29,37 @@ public final class WorldState {
             bodyText = bodyText.replace("<body>", "");
             bodyText = bodyText.replace("</body>", "");
 
-            this.contentJSON = new JSONObject(bodyText);
+            content = new JSONObject(bodyText);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        // Move data to classes
-        this.worldData = new WorldData(
-                this.contentJSON.getLong("Time"),
-                this.contentJSON.getJSONArray("Sorties"),
-                this.contentJSON.getJSONArray("Invasions"),
-                this.contentJSON.getJSONArray("ActiveMissions"),
-                this.contentJSON.getJSONArray("VoidStorms"),
-                this.contentJSON.getJSONArray("Alerts"),
-                this.contentJSON.getJSONArray("GlobalUpgrades")
-        );
+        if (content != null) {
+            this.worldData = new WorldData(
+                    content.getLong("Time"),
+                    content.getJSONArray("Sorties"),
+                    content.getJSONArray("Invasions"),
+                    content.getJSONArray("ActiveMissions"),
+                    content.getJSONArray("VoidStorms"),
+                    content.getJSONArray("Alerts"),
+                    content.getJSONArray("GlobalUpgrades")
+            );
+
+            this.shopData = new ShopData(
+                    content.getJSONArray("DailyDeals"),
+                    content.getJSONArray("VoidTraders"),
+                    content.getJSONArray("FlashSales")
+            );
+
+            this.guildData = new GuildData(
+                    content.getJSONArray("FeaturedGuilds"),
+                    content.getJSONArray("SyndicateMissions")
+            );
+
+            this.pvpData = new PVPData(
+                    content.getJSONArray("PVPChallengeInstances"),
+                    content.getJSONArray("PVPActiveTournaments")
+            );
+        }
     }
 }
