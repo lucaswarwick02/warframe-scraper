@@ -6,8 +6,9 @@ Java application for getting the Warframe World-state
 2. [World State Information](#world-state-information)
    1. [World Data](#world-data)
    2. [Shop Data](#shop-data)
-   3. [PVP, Syndicates and Guilds](#pvp-syndicates-and-guilds)
-   4. [Unused Data](#unused-data)
+   3. [Syndicates and Guilds](#syndicates-and-guilds)
+   4. [PVP](#pvp)
+   5. [Unused Data](#unused-data)
 
 # World State Information <a name="#world-state-information"></a>
 In order to understand the code names, and wait the data actually means, the [World State](https://warframe.fandom.com/wiki/World_State) wikipedia page documents all of the information needed.
@@ -26,11 +27,12 @@ Below is the list of JSON objects which can be accessed and their relevant tab.
 - "DailyDeals"
 - "VoidTraders"
 - "FlashSales"
-## PVP, Syndicates and Guilds <a name="#pvp-syndicates-and-guilds"></a>
+## Syndicates and Guilds <a name="#syndicates-and-guilds"></a>
 - "FeaturedGuilds"
+- "SyndicateMissions"
+## PVP <a name="#pvp"></a>
 - "PVPChallengeInstances"
 - "PVPActiveTournaments"
-- "SyndicateMissions"
 ## Unused Data <a name="#unused-data"></a>
 - "ExperimentRecommended"
 - "PrimeVaultTraders"
